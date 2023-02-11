@@ -128,6 +128,53 @@ and started again TensorBoard with the following output:
 <img src="Pictures/tensorboard_3_2.png" width=150% height=50%>
 <img src="Pictures/tensorboard_3_3.png" width=150% height=50%> 
 
+### Experiment 
+
+The training process utilized SGD with momentum and a cosine annealing rate decay. The warm-up learning rate was set to 5e-4, the number of warm-up steps to 400, and the total number of steps to 6000 to achieve the desired learning rate function.
+
+```
+  optimizer {
+    momentum_optimizer {
+      learning_rate {
+        cosine_decay_learning_rate {
+          learning_rate_base: 5e-4
+          total_steps: 6000
+          warmup_learning_rate: 5e-4
+          warmup_steps: 400
+        }
+      }
+      momentum_optimizer_value: 0.9
+    }
+    use_moving_average: false
+  }
+```
+The training was stopped at 4000 steps as the model was about to start overfitting. Despite the decreasing training loss, both validation loss and mAP had leveled off, indicating that further training would cause overfitting to the dataset.
+
+TensorBoard showed the following output ---> I could not make screenshots because of Mozilla crashes :( 
+Here the terminal output:
+
+```
+.
+.
+.
+
+2023-02-11 11:12:36.295781: W tensorflow/core/common_runtime/bfc_allocator.cc:246] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.09GiB with freed_by_count=0. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+2023-02-11 11:12:36.426473: W tensorflow/core/common_runtime/bfc_allocator.cc:246] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.14GiB with freed_by_count=0. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+INFO:tensorflow:Step 100 per-step time 2.834s loss=0.986
+I0211 11:17:22.606554 140388550543104 model_lib_v2.py:682] Step 100 per-step time 2.834s loss=0.986
+INFO:tensorflow:Step 200 per-step time 2.889s loss=0.856
+I0211 11:22:07.485031 140388550543104 model_lib_v2.py:682] Step 200 per-step time 2.889s loss=0.856
+INFO:tensorflow:Step 300 per-step time 2.879s loss=1.011
+I0211 11:26:52.821874 140388550543104 model_lib_v2.py:682] Step 300 per-step time 2.879s loss=1.011
+INFO:tensorflow:Step 400 per-step time 2.822s loss=0.850
+I0211 11:31:37.648028 140388550543104 model_lib_v2.py:682] Step 400 per-step time 2.822s loss=0.850
+
+.
+.
+.
+
+```
+
 ### Creating animations
 
 <img src="Pictures/animation_1.gif" width=150% height=50%> 
