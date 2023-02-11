@@ -58,7 +58,19 @@ I analyzed a random sample of 30,000 from the dataset.
 
 <img src="Pictures/object_count.png" width=50% height=50%>
 
-i
+The distribution of classes among the classes is highly uneven. The largest number of classes belong to class 1 (cars), while class 4 (cyclists) and class 2 (pedestrians) have the least number of samples, with Class 4 being the rarest.
+
+2. Distribution of objects in images (using splited image into 10*10 grid)
+
+<img src="Pictures/object_distribution.png" width=150% height=50%> 
+
+The analysis indicates that the majority of objects are located in the center of the image, with fewer on the sides and almost no/few objects at the top or bottom. The dataset has a slight horizontal imbalance, therefore applying random horizontal flipping could be beneficial.
+
+3. Distribution of object bounding box in image (using splited image into 10*10 grid)
+
+<img src="Pictures/object_area_distribution.png" width=150% height=50%> 
+
+Both the current and previous distributions demonstrate that while the object centers tend to be located in the center of the image, their bounding boxes sometimes extend to the corners. The high values in the center of the distribution suggest that the majority of the bounding boxes cover the center of the image.
 
 4. Distribution of class frequency in an image
 
