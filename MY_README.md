@@ -64,6 +64,8 @@ i
 
 <img src="Pictures/object_frequency.png" width=150% height=50%> 
 
+Additionally, browsing through the data shows that there are fewer examples taken in dark or foggy conditions when compared to those taken in clear daylight conditions. To counterbalance this, introducing random brightness, contrast, and color variations should be helpful.
+
 ## Step 1b - Create the training - validation splits
 
 I don't understand this step because the data in my workspace was already split. That's why I didn't run the script `create_splits.py`.
